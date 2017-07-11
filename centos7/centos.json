@@ -1,0 +1,54 @@
+{
+  "variables": {
+    "iso": "http://mirror.net.cen.ct.gov/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
+    "checksum": "d2ec6cfa7cf6d89e484aa2d9f830517c",
+    "password": "{{env `PASSWORD`}}",
+    "version": "0.1.0"
+  },
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "iso_url": "{{ user `iso` }}",
+      "iso_checksum": "{{ user `checksum` }}",
+      "iso_checksum_type": "md5",
+      "vm_name": "centos7-base-{{ user `version` }}",
+      "guest_os_type": "RedHat_64",
+      "ssh_username": "root",
+      "ssh_password": "{{ user `password` }",
+      "ssh_port": 22,
+      "headless": 0,
+      "ssh_wait_timeout": "3000s",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "16096"],
+        ["modifyvm", "{{.Name}}", "--cpus", "8"],
+        ["modifyvm", "{{.Name}}", "--audio", "none"]
+      ],
+      "disk_size": "10240",
+      "http_directory": "http",
+      "guest_os_type": "RedHat_64",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+      ],
+      "shutdown_command": "/sbin/halt -p"
+    }
+  ],
+ "provisioners": [
+        {
+            "type": "shell",
+            "script": "provisioners/install-virtualbox-guest-additions.sh"
+        },
+	{
+	"type": "shell",
+	"inline": ["mkdir /root/.ssh/"]
+	},
+	{
+	"type": "file",
+	"source": "files/authorized_keys",
+	"destination": "/root/.ssh/authorized_keys"
+	},
+	{
+	"type": "shell",
+	"inline": ["chmod 0600 /root/.ssh/authorized_keys"]
+	}
+    ]
+}
