@@ -6,12 +6,11 @@ pipeline {
           steps {
                 echo 'Setting up environment'
                 sh  sudo -y install wget unzip
-                sh if [[ ! -f /usr/local/bin/packer ]]; then
+	        sh  '''if [[ ! -f /usr/local/bin/packer ]]; then
                         wget https://releases.hashicorp.com/packer/1.0.3/packer_1.0.3_linux_amd64.zip
                         cd /usr/local/bin
                         unzip packer_1.0.3_linux_amd64.zip
-                   fi
-
+                   fi'''
           }
         }
         stage('Unit') {
