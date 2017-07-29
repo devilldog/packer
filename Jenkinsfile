@@ -16,15 +16,15 @@ pipeline {
         stage('Unit') {
             steps {
                 echo 'Unit Testing..'
-                sh '/usr/local/bin/packer validate centos/centos7.json'
-                sh '/usr/local/bin/packer inspect centos/centos7.json'
+                sh '/usr/local/bin/packer validate centos7/centos.json'
+                sh '/usr/local/bin/packer inspect centos7/centos.json'
 
             }
         }
         stage('Build') {
             steps {
                 echo 'Building Centos7..'
-                sh '/usr/local/bin/packer build centos/centos7.json'
+                sh '/usr/local/bin/packer build centos7/centos.json'
             }
         }
         stage('Deploy') {
