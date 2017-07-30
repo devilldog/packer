@@ -35,7 +35,7 @@
  "provisioners": [
         {
             "type": "shell",
-            "script": "provisioners/install-virtualbox-guest-additions.sh"
+            "script": "centos7/provisioners/install-virtualbox-guest-additions.sh"
         },
 	{
 	"type": "shell",
