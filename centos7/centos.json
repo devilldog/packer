@@ -1,8 +1,8 @@
 {
   "variables": {
     "iso": "http://mirror.net.cen.ct.gov/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
-    "iso_checksum_type": "MD5",
-    "checksum": "d2ec6cfa7cf6d89e484aa2d9f830517c",
+    "iso_checksum_type": "sha256",
+    "checksum": "27bd866242ee058b7a5754e83d8ee8403e216b93d130d800852a96f41c34d86a",
     "password": "{{env `PASSWORD`}}",
     "version": "0.1.0"
   },

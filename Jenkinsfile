@@ -24,7 +24,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building Centos7..'
-                sh '/usr/local/bin/packer build centos7/centos.json'
+                sh '/usr/local/bin/packer build -color=false centos7/centos.json'
             }
         }
         stage('Deploy') {
