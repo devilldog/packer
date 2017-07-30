@@ -43,7 +43,7 @@
 	},
 	{
 	"type": "file",
-	"source": "files/authorized_keys",
+	"source": "centos7/files/authorized_keys",
 	"destination": "/root/.ssh/authorized_keys"
 	},
 	{
