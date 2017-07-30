@@ -14,7 +14,7 @@
       "vm_name": "centos7-base-{{ user `version` }}",
       "guest_os_type": "RedHat_64",
       "ssh_username": "root",
-      "ssh_password": "{{ user `password` }",
+      "ssh_password": "{{ user `password` }}",
       "ssh_port": 22,
       "headless": 0,
       "ssh_wait_timeout": "3000s",
