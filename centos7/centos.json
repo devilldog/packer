@@ -1,7 +1,7 @@
 {
   "variables": {
     "iso": "http://mirror.net.cen.ct.gov/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
-    "checksum": "d2ec6cfa7cf6d89e484aa2d9f830517c",
+    "checksum": "394a9217653e30bdb85f5d6aa7b081ba",
     "password": "{{env `PASSWORD`}}",
     "version": "0.1.0"
   },
