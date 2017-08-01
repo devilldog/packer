@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echc 'Building Centos7..'
+                echo 'Building Centos7..'
                 sh '/usr/local/bin/packer build -force  -color=false centos7/centos.json'
             }
         }
