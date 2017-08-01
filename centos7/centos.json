@@ -22,7 +22,7 @@
         ["modifyvm", "{{.Name}}", "--cpus", "8"],
         ["modifyvm", "{{.Name}}", "--audio", "none"],
 	["modifyvm", "{{.Name}}", "--nic1", "bridged"],
-	["modifyvm", "{{.Name}}", "--bridgeadapter1", "HostInterfaceNetworking-eno1"]
+	["modifyvm", "{{.Name}}", "--bridgeadapter1", "eno1"]
       ],
       "disk_size": "10240",
       "http_directory": "http",
