@@ -5,7 +5,7 @@ pipeline {
         stage('setup') {
           steps {
                 echo 'Setting up environment'
-                sh  'sudo yum -y install wget unzip'
+                sh  'sudo apt install wget unzip'
 	        sh  '''if [[ ! -f /usr/local/bin/packer ]]; then
                         cd /usr/local/bin
                         sudo wget https://releases.hashicorp.com/packer/1.0.3/packer_1.0.3_linux_amd64.zip
