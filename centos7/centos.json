@@ -20,7 +20,10 @@
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "16096"],
         ["modifyvm", "{{.Name}}", "--cpus", "8"],
-        ["modifyvm", "{{.Name}}", "--audio", "none"]
+        ["modifyvm", "{{.Name}}", "--audio", "none"],
+        ["modifyvm", "{{.Name}}", "--nic1", "bridged"],
+        ["modifyvm", "{{.Name}}", "--bridgedapater1", "eno1"]
+	  
       ],
       "disk_size": "10240",
       "http_directory": "http",
