@@ -16,7 +16,7 @@
       "ssh_password": "{{ user `password` }}",
       "ssh_port": 22,
       "headless": 0,
-      "ssh_wait_timeout": "3000s",
+      "ssh_wait_timeout": "13000s",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "16096"],
         ["modifyvm", "{{.Name}}", "--cpus", "8"],
@@ -26,7 +26,6 @@
 	  
       ],
       "disk_size": "10240",
-      "http_directory": "http",
       "guest_os_type": "RedHat_64",
       "boot_command": [
         "<tab> text ks=http://192.168.1.6:8000/packer/centos7/http/ks.cfg<enter><wait>"
