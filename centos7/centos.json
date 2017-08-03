@@ -15,14 +15,12 @@
       "ssh_username": "root",
       "ssh_password": "{{ user `password` }}",
       "ssh_port": 22,
-      "headless": 0,
+      "headless": 1,
       "ssh_wait_timeout": "3000s",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "16096"],
         ["modifyvm", "{{.Name}}", "--cpus", "8"],
-        ["modifyvm", "{{.Name}}", "--audio", "none"],
-	["modifyvm", "{{.Name}}", "--nic1", "bridged"],
-	["modifyvm", "{{.Name}}", "--bridgeadapter1", "eno1"]
+        ["modifyvm", "{{.Name}}", "--audio", "none"]
       ],
       "disk_size": "10240",
       "http_directory": "http",
