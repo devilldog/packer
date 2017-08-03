@@ -1,7 +1,6 @@
 {
   "variables": {
     "iso": "http://mirror.net.cen.ct.gov/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
-    "checksum": "d2ec6cfa7cf6d89e484aa2d9f830517c",
     "password": "{{env `PASSWORD`}}",
     "version": "0.1.0"
   },
@@ -9,25 +8,27 @@
     {
       "type": "virtualbox-iso",
       "iso_url": "{{ user `iso` }}",
-      "iso_checksum": "{{ user `checksum` }}",
-      "iso_checksum_type": "md5",
+      "iso_checksum": "27bd866242ee058b7a5754e83d8ee8403e216b93d130d800852a96f41c34d86a",
+      "iso_checksum_type": "sha256",
       "vm_name": "centos7-base-{{ user `version` }}",
       "guest_os_type": "RedHat_64",
       "ssh_username": "root",
-      "ssh_password": "{{ user `password` }",
+      "ssh_password": "{{ user `password` }}",
       "ssh_port": 22,
-      "headless": 0,
-      "ssh_wait_timeout": "3000s",
+      "headless": 1,
+      "ssh_wait_timeout": "13000s",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "16096"],
         ["modifyvm", "{{.Name}}", "--cpus", "8"],
-        ["modifyvm", "{{.Name}}", "--audio", "none"]
+        ["modifyvm", "{{.Name}}", "--audio", "none"],
+        ["modifyvm", "{{.Name}}", "--nic1", "bridged"],
+        ["modifyvm", "{{.Name}}", "--bridgeadapter1", "eno1"]
+	  
       ],
       "disk_size": "10240",
-      "http_directory": "http",
       "guest_os_type": "RedHat_64",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<tab> text ks=http://192.168.1.6:8000/packer/centos7/http/ks.cfg<enter><wait>"
       ],
       "shutdown_command": "/sbin/halt -p"
     }
@@ -35,7 +36,7 @@
  "provisioners": [
         {
             "type": "shell",
-            "script": "provisioners/install-virtualbox-guest-additions.sh"
+            "script": "centos7/provisioners/install-virtualbox-guest-additions.sh"
         },
 	{
 	"type": "shell",
@@ -43,7 +44,7 @@
 	},
 	{
 	"type": "file",
-	"source": "files/authorized_keys",
+	"source": "centos7/files/authorized_keys",
 	"destination": "/root/.ssh/authorized_keys"
 	},
 	{
